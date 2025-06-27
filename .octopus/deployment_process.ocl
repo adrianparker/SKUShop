@@ -6,6 +6,7 @@ step "run-a-script" {
 
     action {
         action_type = "Octopus.Script"
+        environments = ["dev", "prod"]
         is_required = true
         properties = {
             Octopus.Action.RunOnServer = "false"
