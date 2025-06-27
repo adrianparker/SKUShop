@@ -1,0 +1,18 @@
+step "run-a-script" {
+    name = "Run a Script"
+    properties = {
+        Octopus.Action.TargetRoles = "SKUShop"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Script.ScriptBody = "echo Hello from SKUShop $(get_octopusvariable \"Octopus.Release.Id\") $(get_octopusvariable \"Octopus.Release.Number\") $(get_octopusvariable \"Octopus.Release.Git.TagName\")"
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool_variable = ""
+    }
+}
